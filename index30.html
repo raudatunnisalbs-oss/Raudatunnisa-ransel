@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>RanselPink&Blue | Tas Ransel Eksklusif</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(145deg, #fff5f7 0%, #e6f0ff 100%);
+            color: #1a2a3a;
+            scroll-behavior: smooth;
+        }
+
+        /* Warna utama: pink & biru */
+        :root {
+            --pink-primary: #ff6b8b;
+            --pink-soft: #ffb6c7;
+            --pink-light: #ffe4eb;
+            --blue-primary: #3b82f6;
+            --blue-soft: #7ba9f0;
+            --blue-light: #d9ebff;
+            --dark: #1e2f3e;
+            --white: #ffffff;
+            --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 18px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Container & layout */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 107, 139, 0.2);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--pink-primary), var(--blue-primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .logo i {
+            background: none;
+            -webkit-background-clip: unset;
+            background-clip: unset;
+            color: var(--pink-primary);
+            margin-right: 6px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 600;
+            color: var(--dark);
+            transition: 0.2s;
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--pink-primary);
+        }
+
+        /* tombol */
+        .btn-primary {
+            background: linear-gradient(95deg, var(--pink-primary), var(--blue-primary));
+            border: none;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 700;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: inline-block;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(59, 130, 246, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 18px rgba(255, 107, 139, 0.3);
+        }
+
+        /* Hero / Beranda */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            padding: 60px 0 40px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #ff4d6d, #2563eb);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: #2c3e4e;
+            margin-bottom: 32px;
+            max-width: 90%;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 48px;
+            box-shadow: 0 25px 40px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s;
+            object-fit: cover;
+        }
+
+        .hero-image img:hover {
+            transform: translateY(-8px);
+        }
+
+        /* Section umum */
+        section {
+            padding: 70px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .section-title span {
+            background: linear-gradient(120deg, var(--pink-primary), var(--blue-primary));
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .section-sub {
+            text-align: center;
+            color: #4a5b6b;
+            margin-bottom: 48px;
+            font-size: 1.1rem;
+        }
+
+        /* Grid produk (warna & harga) */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 32px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 107, 139, 0.2);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            border-bottom: 3px solid var(--pink-soft);
+        }
+
+        .card-info {
+            padding: 20px;
+        }
+
+        .card-info h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .color-badge {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-left: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .price {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: var(--pink-primary);
+            margin: 12px 0 8px;
+        }
+
+        .rating {
+            color: #ffb347;
+            font-size: 0.95rem;
+            margin: 8px 0;
+        }
+
+        .rating span {
+            color: #4b5563;
+            margin-left: 8px;
+            font-weight: 500;
+        }
+
+        .review-text {
+            font-size: 0.85rem;
+            color: #5a6874;
+            margin-top: 12px;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 12px;
+        }
+
+        /* Ulasan section */
+        .testimonials {
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 48px;
+            padding: 40px 30px;
+            margin-top: 20px;
+        }
+
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .review-card {
+            background: white;
+            border-radius: 28px;
+            padding: 24px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            border: 1px solid #ffe2ec;
+        }
+
+        .review-card i.fa-quote-left {
+            color: var(--pink-soft);
+            font-size: 1.8rem;
+            opacity: 0.6;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        .review-text p {
+            font-style: normal;
+            line-height: 1.5;
+            margin: 12px 0;
+            color: #2c3e4e;
+        }
+
+        .reviewer {
+            font-weight: 700;
+            margin-top: 16px;
+            color: var(--blue-primary);
+        }
+
+        /* Footer / kontak */
+        footer {
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 48px 0 28px;
+            border-radius: 40px 40px 0 0;
+            margin-top: 40px;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .footer-contact h4, .footer-social h4 {
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+            color: var(--pink-soft);
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin: 14px 0;
+            font-size: 1rem;
+        }
+
+        .contact-detail i {
+            width: 32px;
+            color: var(--blue-soft);
+            font-size: 1.3rem;
+        }
+
+        .contact-detail a {
+            color: #f1f5f9;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .contact-detail a:hover {
+            color: var(--pink-primary);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #2d3a4b;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 780px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 16px;
+            }
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+            .hero-text p {
+                max-width: 100%;
+            }
+            .section-title {
+                font-size: 1.9rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+            .btn-primary {
+                padding: 10px 20px;
+            }
+        }
+
+        /* highlight warna-warni */
+        .pink-bg {
+            background: var(--pink-light);
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="container nav-container">
+        <div class="logo">
+            <i class="fas fa-backpack"></i> RanselChic
+        </div>
+        <ul class="nav-links">
+            <li><a href="#beranda">Beranda</a></li>
+            <li><a href="#warna-produk">Warna & Harga</a></li>
+            <li><a href="#ulasan">Ulasan</a></li>
+            <li><a href="#kontak">Kontak</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main>
+    <!-- Beranda Section -->
+    <section id="beranda">
+        <div class="container hero">
+            <div class="hero-text">
+                <h1>Tas Ransel <br>Warna Impianmu 💖💙</h1>
+                <p>Koleksi eksklusif dengan paduan warna pink & biru yang stylish. Nyaman, tahan lama, dan penuh gaya untuk aktivitas sehari-hari.</p>
+                <a href="#warna-produk" class="btn-primary"><i class="fas fa-shopping-bag"></i> Lihat Koleksi</a>
+            </div>
+            <div class="hero-image">
+                <img src="https://cdn.phototourl.com/free/2026-06-06-721c8ce3-a980-44ec-9af2-8dd112357140.jpg" alt="Tas Ransel Pink cantik" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- Warna - warna tas ransel + Harga & ulasan tiap varian -->
+    <section id="warna-produk">
+        <div class="container">
+            <div class="section-title">
+                🎨 <span>Pilihan Warna & Model</span> 🎒
+            </div>
+            <div class="section-sub">
+                Setiap tas punya karakter warna berbeda, dilengkapi harga dan ulasan pelanggan.
+            </div>
+            <div class="product-grid">
+                <!-- Kartu 1: Ransel Pink Blossom -->
+                <div class="product-card">
+                    <img class="card-img" src="https://cdn.phototourl.com/free/2026-06-06-721c8ce3-a980-44ec-9af2-8dd112357140.jpg" alt="Ransel pink lembut">
+                    <div class="card-info">
+                        <h3>🌸 Pink Blossom <span class="color-badge" style="background: #ff99bb;"></span></h3>
+                        <div class="price">Rp 329.000</div>
+                        <div class="rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                            <span>4.8 (42 ulasan)</span>
+                        </div>
+                        <div class="review-text">
+                            <i class="fas fa-comment-dots" style="color: #ff6b8b;"></i> “Warna pinknya lembut & material anti air! Suka banget 💕”
+                        </div>
+                    </div>
+                </div>
+                <!-- Kartu 2: Ransel Biru Samudra -->
+                <div class="product-card">
+                    <img class="card-img" src="https://cdn.phototourl.com/free/2026-06-06-075a781b-27e9-4ede-b7df-201157852cde.jpg" alt="Ransel biru navy fresh">
+                    <div class="card-info">
+                        <h3>🌊 Biru Samudra <span class="color-badge" style="background: #3b82f6;"></span></h3>
+                        <div class="price">Rp 359.000</div>
+                        <div class="rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <span>5.0 (38 ulasan)</span>
+                        </div>
+                        <div class="review-text">
+                            <i class="fas fa-comment-dots" style="color: #3b82f6;"></i> “Warna birunya cerah, muat laptop 14 inch, worth it!”
+                        </div>
+                    </div>
+                </div>
+                <!-- Kartu 3: Ransel Mint Segar -->
+                <div class="product-card">
+                    <img class="card-img" src="https://images.unsplash.com/photo-1491637639811-60e2756cc1c7?w=400&h=300&fit=crop" alt="Ransel hijau mint">
+                    <div class="card-info">
+                        <h3>🍃 Mint Segar <span class="color-badge" style="background: #6ee7b7;"></span></h3>
+                        <div class="price">Rp 299.000</div>
+                        <div class="rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <span>4.9 (27 ulasan)</span>
+                        </div>
+                        <div class="review-text">
+                            <i class="fas fa-comment-dots" style="color: #2dd4bf;"></i> “Warna mint bikin fresh, ringan & banyak kantong.”
+                        </div>
+                    </div>
+                </div>
+                <!-- Kartu 4: Ransel Lavender Dream -->
+                <div class="product-card">
+                    <img class="card-img" src="https://cdn.phototourl.com/free/2026-06-06-d3efc34c-8db6-40a2-9e82-287e48dbd8de.jpg" alt="Ransel lavender ungu">
+                    <div class="card-info">
+                        <h3>🔮 Lavender Dream <span class="color-badge" style="background: #c084fc;"></span></h3>
+                        <div class="price">Rp 389.000</div>
+                        <div class="rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                            <span>4.7 (23 ulasan)</span>
+                        </div>
+                        <div class="review-text">
+                            <i class="fas fa-comment-dots" style="color: #a78bfa;"></i> “Unik & elegan, kulit sintetis premium. Suka banget!”
+                        </div>
+                    </div>
+                </div>
+                <!-- Bonus : Ransel Sunset Pink+Blue kombinasi -->
+                <div class="product-card">
+                    <img class="card-img" src="https://cdn.phototourl.com/free/2026-06-06-8abe1aeb-1463-4402-a5dd-8cdee0bfbc36.jpg" alt="Ransel dual tone pink blue">
+                    <div class="card-info">
+                        <h3>🎭 Dusk Blend <span class="color-badge" style="background: linear-gradient(45deg, #ff6b8b, #3b82f6);"></span></h3>
+                        <div class="price">Rp 419.000</div>
+                        <div class="rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <span>5.0 (15 ulasan)</span>
+                        </div>
+                        <div class="review-text">
+                            <i class="fas fa-comment-dots" style="color: #ff9a9e;"></i> “Ombre pink-biru super aesthetic! Jadi favorit.”
+                        </div>
+                    </div>
+                </div>
+                <!-- Ransel Baby blue -->
+                <div class="product-card">
+                    <img class="card-img" src="https://cdn.phototourl.com/free/2026-06-06-bfeda7f8-9db9-4215-8568-6c0fa43e3a4a.jpg" alt="Ransel baby blue">
+                    <div class="card-info">
+                        <h3>💙 Baby Blue Sky <span class="color-badge" style="background: #7dd3fc;"></span></h3>
+                        <div class="price">Rp 279.000</div>
+                        <div class="rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <span>4.9 (31 ulasan)</span>
+                        </div>
+                        <div class="review-text">
+                            <i class="fas fa-comment-dots" style="color: #38bdf8;"></i> “Pastel kalem, cocok buat daily casual.”
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ulasan pelanggan terpisah -->
+    <section id="ulasan">
+        <div class="container">
+            <div class="section-title">
+                💬 <span>Ulasan & Testimoni</span> 🌟
+            </div>
+            <div class="section-sub">
+                Apa kata mereka tentang koleksi tas ransel kami?
+            </div>
+            <div class="testimonials">
+                <div class="review-grid">
+                    <div class="review-card">
+                        <i class="fas fa-quote-left"></i>
+                        <p>“Tas ransel Pink Blossom sangat berkualitas! Jahitan rapi, warna persis seperti foto. Harga bersaing. Pengiriman cepat. Top markotop!”</p>
+                        <div class="reviewer">— Salsabila R. <i class="fas fa-check-circle" style="color:#3b82f6;"></i></div>
+                        <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    </div>
+                    <div class="review-card">
+                        <i class="fas fa-quote-left"></i>
+                        <p>“Biru Samudra juara! Bahan anti gores, banyak kompartemen. Tas favorit kuliah. Worth every penny. Ulasan 5/5!”</p>
+                        <div class="reviewer">— Dimas P.</div>
+                        <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    </div>
+                    <div class="review-card">
+                        <i class="fas fa-quote-left"></i>
+                        <p>“Lavender Dream sangat cantik dan unik, dapat banyak pujian. Resleting halus, recomended! Pelayanan ramah. Akan beli lagi.”</p>
+                        <div class="reviewer">— Naura A.</div>
+                        <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                    </div>
+                    <div class="review-card">
+                        <i class="fas fa-quote-left"></i>
+                        <p>“Dusk Blend modelnya kece banget, dual tone pink-biru keren. Harga sesuai kualitas. Next mau beli buat kado.”</p>
+                        <div class="reviewer">— Keanu W.</div>
+                        <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 30px;">
+                    <i class="fas fa-smile-wink" style="color: #ff6b8b;"></i> Rata-rata rating: <strong>4.9/5</strong> dari 170+ ulasan original
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer + Kontak (email & no telepon diminta) -->
+<footer id="kontak">
+    <div class="container footer-container">
+        <div class="footer-contact">
+            <h4><i class="fas fa-headset"></i> Hubungi Kami</h4>
+            <div class="contact-detail">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:raudatunnisalbs@gmail.com">raudatunnisalbs@gmail.com</a>
+            </div>
+            <div class="contact-detail">
+                <i class="fas fa-phone-alt"></i>
+                <a href="tel:+6283832526976">0838-3252-6976</a>
+                <span style="margin-left: 8px;">( WhatsApp & Telepon )</span>
+            </div>
+            <div class="contact-detail">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Online 24 jam - Kirim ke seluruh Indonesia</span>
+            </div>
+        </div>
+        <div class="footer-social">
+            <h4><i class="fab fa-instagram"></i> Ikuti Kami</h4>
+            <div class="contact-detail">
+                <i class="fab fa-instagram"></i> @ranselchic_id
+            </div>
+            <div class="contact-detail">
+                <i class="fab fa-tiktok"></i> @ranselpinkblue
+            </div>
+            <div class="contact-detail">
+                <i class="fas fa-store"></i> Toko Official RanselChic
+            </div>
+        </div>
+        <div style="max-width: 260px;">
+            <h4>📢 Garansi & Layanan</h4>
+            <p style="font-size: 0.85rem;">Tas berkualitas dengan garansi 30 hari. Chat kami untuk size guide dan stok warna terbaru.</p>
+        </div>
+    </div>
+    <div class="container copyright">
+        <p>© 2025 RanselChic - Koleksi Tas Ransel Warna Pink & Biru. Semua hak dilindungi. 💖💙</p>
+        <p style="margin-top: 8px;"><i class="fas fa-heart" style="color:#ff6b8b;"></i> Desain nyaman untukmu | Email & kontak aktif</p>
+    </div>
+</footer>
+
+<!-- Smooth scroll & efek kecil -->
+<script>
+    (function() {
+        // Menambahkan smooth scroll untuk semua anchor link
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === "#" || targetId === "") return;
+                const targetElem = document.querySelector(targetId);
+                if (targetElem) {
+                    e.preventDefault();
+                    targetElem.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    })();
+</script>
+</body>
+</html>
